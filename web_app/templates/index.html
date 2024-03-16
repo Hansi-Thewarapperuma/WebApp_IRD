@@ -1,0 +1,674 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Inherited Risk Detector</title>-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background-color: #f4f4f4;-->
+<!--            color: #333;-->
+<!--            text-align: center;-->
+<!--            margin: 50px;-->
+<!--            background-image: url('pic1.jpg'); /* Add the correct path to your image */-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            color: #007bff;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        p {-->
+<!--            color: #555;-->
+<!--            font-size: 18px;-->
+<!--            margin-bottom: 10px;-->
+<!--            text-align: left;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style-type: none;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        li {-->
+<!--            font-size: 16px;-->
+<!--            color: #333;-->
+<!--            text-align: left;-->
+<!--            margin-bottom: 10px;-->
+<!--            display: none; /* Initially hide all list items */-->
+<!--            transition: opacity 0.5s ease-in-out; /* Add transition for opacity */-->
+<!--        }-->
+<!--        -->
+<!--        li.show {-->
+<!--            display: block;-->
+<!--            opacity: 1; /* Show the list item with opacity */-->
+<!--        }-->
+
+<!--        form {-->
+<!--            max-width: 600px;-->
+<!--            margin: 20px auto;-->
+<!--            padding: 20px;-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 10px;-->
+<!--            font-weight: bold;-->
+<!--            font-size: 16px;-->
+<!--            color: #333;-->
+<!--            text-align: left;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            width: 100%;-->
+<!--            padding: 12px;-->
+<!--            margin-bottom: 20px;-->
+<!--            box-sizing: border-box;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        button {-->
+<!--            background-color: #007bff;-->
+<!--            color: #fff;-->
+<!--            padding: 12px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Inherited Risk Detector</h1>-->
+<!--    <h2>Uncover the secrets hidden in your genome effortlessly.</h2>-->
+<!--    <ul>-->
+<!--        <li id="feature1" class="show"><strong>🔍 Uncover Hereditary Disease Risk:</strong> Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions.</li>-->
+<!--        <li id="feature2" class="show"><strong>🌐 Pathogenic or Likely Pathogenic:</strong> Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights.</li>-->
+<!--        <li id="feature3" class="show"><strong>🦸‍♀️ Predisposition to Inherited Cancer:</strong> Understand your risk of inherited cancer. Inherited Risk Detector goes beyond basic analysis, delivering comprehensive information about your genetic predispositions.</li>-->
+<!--    </ul>-->
+<!--    <p><strong>💡 Why Choose Us?</strong></p>-->
+<!--    <ul>-->
+<!--        <li id="choose1">Save Time: Streamlined processes for efficient variant detection.</li>-->
+<!--        <li id="choose2">Enhance Accuracy: Cutting-edge technology for precise genetic insights.</li>-->
+<!--        <li id="choose3">Elevate Your Game: Stay ahead with advanced and comprehensive analysis.</li>-->
+<!--    </ul>-->
+<!--    <p>Experience a new era of genetic understanding. Choose Inherited Risk Detector for a journey of discovery, accuracy, and peace of mind.</p>-->
+<!--&lt;!&ndash;    <form action="/process" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="user_tsv">Enter TSV File:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" name="user_tsv" id="user_tsv" required>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+
+<!--    <form action="/process" method="post" enctype="multipart/form-data">-->
+<!--        <label for="user_tsv">Upload TSV File:</label>-->
+<!--        <input type="file" name="user_tsv" id="user_tsv" accept=".tsv" required>-->
+<!--        <button type="submit">Submit</button>-->
+<!--    </form>-->
+
+
+<!--    <script>-->
+<!--        // JavaScript for the slideshow effect-->
+<!--        const features = document.querySelectorAll('ul li[id^="feature"]');-->
+<!--        let currentFeatureIndex = 0;-->
+
+<!--        function showNextFeature() {-->
+<!--            features[currentFeatureIndex].classList.remove('show'); // Hide the current feature-->
+<!--            currentFeatureIndex = (currentFeatureIndex + 1) % features.length; // Move to the next feature-->
+<!--            features[currentFeatureIndex].classList.add('show'); // Show the next feature-->
+<!--        }-->
+
+<!--        // JavaScript for displaying "Why Choose Us?" section-->
+<!--        const chooseItems = document.querySelectorAll('ul li[id^="choose"]');-->
+<!--        chooseItems.forEach(item => item.style.display = 'block'); // Make "Why Choose Us?" section always visible-->
+
+<!--        // Set an interval to show the features one at a time-->
+<!--        setInterval(showNextFeature, 3000); // Change the duration (in milliseconds) as needed-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Inherited Risk Detector</title>-->
+<!--    &lt;!&ndash; Include Bulma CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            background-image: url('pic1.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            color: #3273dc; /* Bulma blue color */-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        /* Add your custom styles or adjust existing ones as needed */-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <section class="section">-->
+<!--        <div class="container">-->
+<!--            <h1 class="title is-1">Inherited Risk Detector</h1>-->
+<!--            <h2 class="subtitle is-4">Uncover the secrets hidden in your genome effortlessly.</h2>-->
+
+<!--            <div class="content">-->
+<!--                &lt;!&ndash; Replace ul and li with Bulma classes &ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="has-text-weight-bold">💡 Why Choose Us?</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li>Save Time: Streamlined processes for efficient variant detection.</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li>Enhance Accuracy: Cutting-edge technology for precise genetic insights.</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li>Elevate Your Game: Stay ahead with advanced and comprehensive analysis.</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                </ul>&ndash;&gt;-->
+
+<!--                <p class="has-text-weight-bold">Features:</p>-->
+<!--                <div id="feature-slideshow" class="carousel">-->
+<!--                    &lt;!&ndash; Add Bulma carousel items here &ndash;&gt;-->
+<!--                    <div class="carousel-item">🔍 Uncover Hereditary Disease Risk: Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions.</div>-->
+<!--                    <div class="carousel-item">🌐 Pathogenic or Likely Pathogenic: Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights.</div>-->
+<!--                    <div class="carousel-item">🦸‍♀️ Predisposition to Inherited Cancer: Understand your risk of inherited cancer. Inherited Risk Detector goes beyond basic analysis, delivering comprehensive information about your genetic predispositions.</div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <p class="has-text-weight-bold">Upload TSV File:</p>-->
+<!--            <form action="/process" method="post" enctype="multipart/form-data">-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <input type="file" class="input" name="user_tsv" id="user_tsv" accept=".tsv" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <button type="submit" class="button is-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <script>-->
+<!--        // You can add any necessary JavaScript for your features or slideshow here-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Inherited Risk Detector</title>-->
+<!--    &lt;!&ndash; Include Bulma CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">-->
+
+<!--    <style>-->
+<!--        body {-->
+
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            margin: 0; /* Remove default margin */-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            color: #3273dc; /* Bulma blue color */-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        /* Add your custom styles or adjust existing ones as needed */-->
+
+<!--        .carousel {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--            padding: 20px; /* Add padding for better visibility */-->
+<!--            background-image: url('pic1.jpg'); /* Add background image */-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        .carousel-item {-->
+<!--            display: none;-->
+<!--            padding: 20px;-->
+<!--            background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */-->
+<!--            border-radius: 10px;-->
+<!--        }-->
+
+<!--        .carousel-item:first-child {-->
+<!--            display: block; /* Display the first slide initially */-->
+<!--        }-->
+
+<!--        /* Hide previous and next buttons */-->
+<!--        .carousel-btns {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .button.is-link {-->
+<!--            margin: 0 5px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <section class="section">-->
+<!--        <div class="container">-->
+<!--            <h1 class="title is-1">Inherited Risk Detector</h1>-->
+<!--            <h2 class="subtitle is-4">Uncover the secrets hidden in your genome effortlessly.</h2>-->
+
+<!--            <p class="has-text-weight-bold">Upload TSV File:</p>-->
+<!--            <form action="/process" method="post" enctype="multipart/form-data">-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <input type="file" class="input" name="user_tsv" id="user_tsv" accept=".tsv" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <button type="submit" class="button is-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Move slideshow after the form &ndash;&gt;-->
+<!--    <div class="container">-->
+<!--        <div class="content">-->
+<!--            <p class="has-text-weight-bold">Features:</p>-->
+<!--            <div id="feature-slideshow" class="carousel">-->
+<!--                &lt;!&ndash; Add Bulma carousel items here &ndash;&gt;-->
+<!--                <div class="carousel-item">🔍 Uncover Hereditary Disease Risk:<br>Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions.</div>-->
+<!--                <div class="carousel-item">🌐 Pathogenic or Likely Pathogenic:<br>Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights.</div>-->
+<!--                <div class="carousel-item">🦸‍♀️ Predisposition to Inherited Cancer:<br>Understand your risk of inherited cancer. Inherited Risk Detector goes beyond basic analysis, delivering comprehensive information about your genetic predispositions.</div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Remove or comment out the buttons &ndash;&gt;-->
+<!--            &lt;!&ndash; <div class="carousel-btns">-->
+<!--                <button class="button is-link prev">Previous</button>-->
+<!--                <button class="button is-link next">Next</button>-->
+<!--            </div> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        let slideIndex = 0;-->
+
+<!--        function showSlides() {-->
+<!--            const slides = document.getElementsByClassName("carousel-item");-->
+
+<!--            for (let i = 0; i < slides.length; i++) {-->
+<!--                slides[i].style.display = "none";-->
+<!--            }-->
+
+<!--            slideIndex++;-->
+
+<!--            if (slideIndex > slides.length) {-->
+<!--                slideIndex = 1;-->
+<!--            }-->
+
+<!--            slides[slideIndex - 1].style.display = "block";-->
+<!--            setTimeout(showSlides, 3000); // Change slide every 3 seconds-->
+<!--        }-->
+
+<!--        // Initial call to start the slideshow-->
+<!--        showSlides();-->
+<!--    </script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--&lt;!&ndash; WORKING img case&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Inherited Risk Detector</title>-->
+<!--    &lt;!&ndash; Include Bulma CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            margin: 0; /* Remove default margin */-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            color: #3273dc; /* Bulma blue color */-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .logo-img {-->
+<!--            max-width: 100%; /* Ensure the image doesn't exceed its container */-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        /* Add your custom styles or adjust existing ones as needed */-->
+
+<!--        .carousel {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--            padding: 20px; /* Add padding for better visibility */-->
+<!--            background-image: url("{{ url_for('static', filename='pic1.jpg') }}");-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        .carousel-item {-->
+<!--            display: none;-->
+<!--            padding: 20px;-->
+<!--            background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */-->
+<!--            border-radius: 10px;-->
+<!--        }-->
+
+<!--        .carousel-item:first-child {-->
+<!--            display: block; /* Display the first slide initially */-->
+<!--        }-->
+
+<!--        /* Hide previous and next buttons */-->
+<!--        .carousel-btns {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .button.is-link {-->
+<!--            margin: 0 5px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <section class="section">-->
+<!--        <div class="container">-->
+<!--            <img src="{{ url_for('static', filename='pic2.png') }}" alt="Inherited Risk Detector Logo" class="logo-img">-->
+<!--            <h1 class="title is-1">Inherited Risk Detector</h1>-->
+<!--            <h2 class="subtitle is-4">Uncover the secrets hidden in your genome effortlessly.</h2>-->
+
+<!--            <p class="has-text-weight-bold">Upload TSV File:</p>-->
+<!--            <form action="/process" method="post" enctype="multipart/form-data">-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <input type="file" class="input" name="user_tsv" id="user_tsv" accept=".tsv" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="field">-->
+<!--                    <div class="control">-->
+<!--                        <button type="submit" class="button is-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Move slideshow after the form &ndash;&gt;-->
+<!--    <div class="container">-->
+<!--        <div class="content">-->
+<!--            <p class="has-text-weight-bold">Features:</p>-->
+<!--            <div id="feature-slideshow" class="carousel">-->
+<!--                &lt;!&ndash; Add Bulma carousel items here &ndash;&gt;-->
+<!--                <div class="carousel-item">🔍 Uncover Hereditary Disease Risk:<br>Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions.</div>-->
+<!--                <div class="carousel-item">🌐 Pathogenic or Likely Pathogenic:<br>Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights.</div>-->
+<!--                <div class="carousel-item">🦸‍♀️ Predisposition to Inherited Cancer:<br>Understand your risk of inherited cancer. Inherited Risk Detector goes beyond basic analysis, delivering comprehensive information about your genetic predispositions.</div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Remove or comment out the buttons &ndash;&gt;-->
+<!--            &lt;!&ndash; <div class="carousel-btns">-->
+<!--                <button class="button is-link prev">Previous</button>-->
+<!--                <button class="button is-link next">Next</button>-->
+<!--            </div> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        let slideIndex = 0;-->
+
+<!--        function showSlides() {-->
+<!--            const slides = document.getElementsByClassName("carousel-item");-->
+
+<!--            for (let i = 0; i < slides.length; i++) {-->
+<!--                slides[i].style.display = "none";-->
+<!--            }-->
+
+<!--            slideIndex++;-->
+
+<!--            if (slideIndex > slides.length) {-->
+<!--                slideIndex = 1;-->
+<!--            }-->
+
+<!--            slides[slideIndex - 1].style.display = "block";-->
+<!--            setTimeout(showSlides, 3000); // Change slide every 3 seconds-->
+<!--        }-->
+
+<!--        // Initial call to start the slideshow-->
+<!--        showSlides();-->
+<!--    </script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--&lt;!&ndash; WORKING img case&ndash;&gt;-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inherited Risk Detector</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0; /* Remove default margin */
+        }
+
+        .header-banner {
+            background-color: #1c3280;
+            padding: 20px 0; /* Add padding for better visibility */
+            text-align: center;
+            color: #fff; /* White text for contrast */
+        }
+
+        .header-banner h1 {
+            margin: 0; /* Remove margin for a cleaner look */
+            font-size: 2.5rem; /* Increased font size */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .logo-img {
+            max-width: 300px; /* Set a bit larger maximum width for the logo */
+            margin-left: 40px; /* Add margin to separate logo from text */
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space out the items */
+        }
+
+        .carousel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px; /* Add padding for better visibility */
+            background-image: url("{{ url_for('static', filename='pic1.jpg') }}");
+            background-size: contain; /* Change to contain for a bigger background image */
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item {
+            display: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+            border-radius: 10px;
+            font-weight: bold; /* Make font bold */
+            font-family: Arial, sans-serif; /* Use Arial font */
+        }
+
+        .carousel-item:first-child {
+            display: block; /* Display the first slide initially */
+        }
+
+        .section {
+            margin-bottom: 20px; /* Add some space below the section */
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto; /* Center the form container */
+            color: #fff; /* White text color */
+        }
+
+        .section-text {
+            color: #fff; /* White text color */
+        }
+
+        .content {
+            text-align: center; /* Center the content */
+        }
+
+        .features-container {
+            margin-top: 20px; /* Add space above the features */
+        }
+
+        .button.is-link {
+            margin-top: 10px; /* Add space above the button */
+        }
+
+        .bottom-text {
+            color: #fff; /* White text color */
+            margin-top: 10px; /* Add space at the top */
+        }
+
+        .bottom-text a {
+            color: #fff; /* White text color for the link */
+            text-decoration: underline; /* Add underline to the link */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header-banner">
+        <h1>🔍 Inherited Risk Detector</h1>
+        <h2 class="subtitle is-4 section-text"><i> Uncover the secrets hidden in your genome effortlessly</i></h2>
+
+    <section class="section">
+
+        <div class="container form-container">
+
+
+<!--            <div class="header-container">-->
+<!--                <img src="{{ url_for('static', filename='pic2.png') }}" alt="Inherited Risk Detector Logo" class="logo-img">-->
+<!--            </div>-->
+
+
+            <p class="has-text-weight-bold">Upload TSV File:</p>
+            <form action="/process" method="post" enctype="multipart/form-data">
+                <div class="field">
+                    <div class="control">
+                        <input type="file" class="input" name="user_tsv" id="user_tsv" accept=".tsv" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <div class="header-container">
+                <img src="{{ url_for('static', filename='pic2.png') }}" alt="Inherited Risk Detector Logo" class="logo-img">
+                <div class="bullet-points">
+                    <ul>
+                        <li>🌐 <b>Uncover Hereditary Disease Risk:</b><br>Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions</li>
+                        <li>🌐 <b>Pathogenic or Likely Pathogenic:</b><br>Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights</li>
+                        <li>🌐️ <b>Predisposition to Inherited Cancer:</b><br>Understand your risk of inherited cancer. Going beyond basic analysis, delivering comprehensive information about your genetic predispositions</li>
+                    </ul>
+                </div>
+            </div>
+            <br><p class="bottom-text"><i>Our command-line tool and guidelines for annotation are available</i> <a href="https://github.com/Hansi-Thewarapperuma/Inherited_Risk_Detector" target="_blank">here</a>.</p>
+        </div>
+    </section>
+    </div>
+    <!-- Move slideshow after the form -->
+    <div class="container content features-container">
+        <p class="has-text-weight-bold">Features:</p>
+        <div id="feature-slideshow" class="carousel">
+            <!-- Add Bulma carousel items here -->
+            <div class="carousel-item">🌐 Uncover Hereditary Disease Risk:<br>Wondering if you carry hereditary disease-causing variants? Inherited Risk Detector provides clarity on your genetic predispositions.</div>
+            <div class="carousel-item">🌐 Pathogenic or Likely Pathogenic:<br>Learn whether detected variants are pathogenic or likely pathogenic. Our advanced technology enhances accuracy, providing you with precise insights.</div>
+            <div class="carousel-item">🌐️ Predisposition to Inherited Cancer:<br>Understand your risk of inherited cancer. Going beyond basic analysis, delivering comprehensive information about your genetic predispositions.</div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("carousel-item");
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
+
+        // Initial call to start the slideshow
+        showSlides();
+    </script>
+</body>
+</html>
+
+
+

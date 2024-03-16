@@ -1,0 +1,243 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Results</title>-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background-color: #f4f4f4;-->
+<!--            color: #333;-->
+<!--            text-align: center;-->
+<!--            margin: 50px;-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            color: #007bff;-->
+<!--            margin-top: 30px;-->
+<!--        }-->
+
+<!--        p {-->
+<!--            background-color: #fff;-->
+<!--            padding: 10px;-->
+<!--            border-radius: 5px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+
+<!--        button {-->
+<!--            background-color: #007bff;-->
+<!--            color: #fff;-->
+<!--            padding: 12px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+
+
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            width: 100%;-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+
+<!--        th, td {-->
+<!--            border: 1px solid #ddd;-->
+<!--            padding: 8px;-->
+<!--            text-align: left;-->
+<!--        }-->
+
+<!--        th {-->
+<!--            background-color: #007bff;-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>It all comes down to your DNA</h1>-->
+
+<!--    <h2>Count of Detected Variants</h2>-->
+<!--    <p>Count of pathogenic variants detected: {{ pathogenic_count }}</p>-->
+<!--    <p>Count of pathogenic or likely-pathogenic variants detected: {{ pathogenic_likely_pathogenic_count }}</p>-->
+
+<!--    <div style="display: flex; justify-content: space-between;">-->
+
+<!--        &lt;!&ndash; Display table for pathogenic variants &ndash;&gt;-->
+<!--        <div style="width: 48%;">-->
+<!--            <h3>Pathogenic Variants</h3>-->
+<!--            {% if pathogenic_variants_data %}-->
+<!--                <table class="table table-striped">-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>CHROM</th>-->
+<!--                            <th>POS</th>-->
+<!--                            <th>ID</th>-->
+<!--                            <th>ANN[0].GENE</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                        {% for row in pathogenic_variants_data %}-->
+<!--                            <tr>-->
+<!--                                {% for value in row %}-->
+<!--                                    <td>{{ value }}</td>-->
+<!--                                {% endfor %}-->
+<!--                            </tr>-->
+<!--                        {% endfor %}-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            {% else %}-->
+<!--                <p>No pathogenic variants detected.</p>-->
+<!--            {% endif %}-->
+<!--            <a href="{{ url_for('static', filename='pathogenic_variants.tsv') }}" download="pathogenic_variants.tsv">-->
+<!--                <button class="download-btn">Download Pathogenic Variants</button>-->
+<!--            </a>-->
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Display table for likely pathogenic variants &ndash;&gt;-->
+<!--        <div style="width: 48%;">-->
+<!--            <h3>Likely Pathogenic Variants</h3>-->
+<!--            {% if likely_pathogenic_variants_data %}-->
+<!--                <table class="table table-striped">-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>CHROM</th>-->
+<!--                            <th>POS</th>-->
+<!--                            <th>ID</th>-->
+<!--                            <th>ANN[0].GENE</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                        {% for row in likely_pathogenic_variants_data %}-->
+<!--                            <tr>-->
+<!--                                {% for value in row %}-->
+<!--                                    <td>{{ value }}</td>-->
+<!--                                {% endfor %}-->
+<!--                            </tr>-->
+<!--                        {% endfor %}-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            {% else %}-->
+<!--                <p>No likely pathogenic variants detected.</p>-->
+<!--            {% endif %}-->
+
+<!--            <a href="{{ url_for('static', filename='pathogenic_likely_pathogenic_variants.tsv') }}" download="pathogenic_likely_pathogenic_variants.tsv">-->
+<!--                <button class="download-btn">Download Pathogenic or Likely-Pathogenic Variants</button>-->
+<!--            </a>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+
+<!--&lt;!&ndash;    <a href="{{ pathogenic_output_file }}" download>Download Pathogenic Variants</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a href="{{ pathogenic_likely_pathogenic_output_file }}" download>Download Pathogenic/Likely Pathogenic Variants</a>&ndash;&gt;-->
+
+
+
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">It all comes down to your DNA</h1>
+
+            <h2 class="subtitle">🔍 Count of Detected Variants</h2>
+            <br>
+
+            <div class="notification is-info">
+                <p>Count of pathogenic variants detected: {{ pathogenic_count }}</p>
+                <p>Count of pathogenic or likely-pathogenic variants detected: {{ pathogenic_likely_pathogenic_count }}</p>
+            </div>
+            <br>
+
+            <div class="columns">
+                <!-- Display table for pathogenic variants -->
+                <div class="column is-half">
+                    <h3 class="title is-4">Pathogenic Variants</h3>
+                    {% if pathogenic_variants_data %}
+                        <table class="table is-fullwidth is-striped">
+                            <thead>
+                                <tr>
+                                    <th>CHROM</th>
+                                    <th>POS</th>
+                                    <th>ID</th>
+                                    <th>GENE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in pathogenic_variants_data %}
+                                    <tr>
+                                        {% for value in row %}
+                                            <td>{{ value }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No pathogenic variants detected.</p>
+                    {% endif %}
+                    <br>
+                    <a href="{{ url_for('static', filename='pathogenic_variants.tsv') }}" download="pathogenic_variants.tsv">
+                        <button class="button is-primary">Download Pathogenic Variants</button>
+                    </a>
+                </div>
+
+                <!-- Display table for likely pathogenic variants -->
+                <div class="column is-half">
+                    <h3 class="title is-4">Pathogenic/ Likely-Pathogenic Variants</h3>
+                    {% if likely_pathogenic_variants_data %}
+                        <table class="table is-fullwidth is-striped">
+                            <thead>
+                                <tr>
+                                    <th>CHROM</th>
+                                    <th>POS</th>
+                                    <th>ID</th>
+                                    <th>GENE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in likely_pathogenic_variants_data %}
+                                    <tr>
+                                        {% for value in row %}
+                                            <td>{{ value }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No likely pathogenic variants detected.</p>
+                    {% endif %}
+                    <a href="{{ url_for('static', filename='pathogenic_likely_pathogenic_variants.tsv') }}" download="pathogenic_likely_pathogenic_variants.tsv">
+                        <button class="button is-primary">Download Pathogenic/ Likely-Pathogenic Variants</button>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</body>
+</html>
